@@ -43,7 +43,16 @@ router.get('/', async (req, res) => {
     try {
 
         const songs = await Song.find()
-        console.log(songs)
+        res.json(songs)
+    } catch (e) {
+        res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
+    }
+})
+
+router.get('/sort', async (req, res) => {
+    try {
+
+        const songs = await Song.find().sort({title: 1})
         res.json(songs)
     } catch (e) {
         res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })

@@ -2,7 +2,7 @@ import React, {useContext} from 'react'
 import {useHttp} from '../hooks/http.hook'
 import {Link} from 'react-router-dom'
 
-export const SongsList = ({ songs, handle }) => {
+export const SongsList = ({ songs, handle, sort }) => {
 
     if (!songs.length) {
         return <p className="center">Не найдено ни одной песни</p>
@@ -11,6 +11,15 @@ export const SongsList = ({ songs, handle }) => {
     return (
 
         <>
+            <div>
+                <button
+                    className="btn yellow darken-4"
+                    style={{marginRight: 10}}
+                    onClick={(e) => sort(songs)}
+                >
+                    Sort by name
+                </button>
+            </div>
             { songs.map((song) => {
                 return (
                     <div className="card center-align" style = {{width:'400px', display: 'inline-block', margin: '10px'}}>

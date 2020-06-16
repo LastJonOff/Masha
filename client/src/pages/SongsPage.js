@@ -9,7 +9,7 @@ export const SongsPage = () => {
     const [songs, setSongs] = useState([])
     const {loading, request} = useHttp()
 
-    const fetchTodos = useCallback(async () => {
+    const fetchSongs = useCallback(async () => {
         try {
             const fetched = await request('/api/songs', 'GET', null)
 
@@ -18,8 +18,8 @@ export const SongsPage = () => {
     }, [request])
 
     useEffect(() => {
-        fetchTodos()
-    }, [fetchTodos])
+        fetchSongs()
+    }, [fetchSongs])
 
     if (loading) {
         return <Loader/>
@@ -28,14 +28,23 @@ export const SongsPage = () => {
     const pressHandler = async (removeId) => {
         try {
             const data = await request('/api/songs/delete', 'DELETE', {id: removeId})
-            history.push(`/create`)
+            setSongs( songs.filter(song => {
+                return song._id !== removeId
+            }))
+        } catch (e) {}
+    }
+
+    const sortHandler = async (songs) => {
+        try {
+            const fetched = await request('/api/songs/sort', 'GET', null)
+            setSongs(fetched)
         } catch (e) {}
     }
 
 
     return (
         <>
-            {!loading && <SongsList songs={songs} handle = {pressHandler}/>}
+            {!loading && <SongsList songs={songs} handle = {pressHandler}  sort = {sortHandler}/>}
         </>
     )
 }
