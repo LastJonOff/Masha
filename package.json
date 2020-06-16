@@ -1,5 +1,5 @@
 {
-  "name": "coursesema",
+  "name": "courseapp",
   "version": "1.0.0",
   "description": "Mern stack",
   "main": "app.js",
@@ -14,7 +14,7 @@
     "course",
     "react"
   ],
-  "author": "Maksimov Semen",
+  "author": "Alexey",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",

@@ -1,6 +1,4 @@
 {
   "port": 5000,
-  "jwtSecret":  "some_some",
-  "mongoUri": "mongodb+srv://admin:12341234@cluster0-nrpgs.azure.mongodb.net/test?retryWrites=true&w=majority",
-  "baseUrl": "http://localhost:5000"
+  "mongoUri": "mongodb+srv://admin:pass1234@cluster0-5pffg.azure.mongodb.net/<dbname>?retryWrites=true&w=majority"
 }
